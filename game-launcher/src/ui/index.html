@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'">
+  <title>Game Launcher</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <aside>
+    <header>
+      <h1>บัญชีเกม</h1>
+      <button id="add" class="primary">+ เพิ่ม</button>
+    </header>
+    <div class="bulk">
+      <label><input type="checkbox" id="selAll"> เลือกทั้งหมด</label>
+      <div class="row">
+        <button id="pauseFull" title="ปิดหน้าเกมทิ้ง คืน RAM ตัวละครจะออกจากเกม">พักภาพ</button>
+        <button id="pauseSoft" title="ซ่อนไว้ ยังออนไลน์ ลด CPU">พักเบา</button>
+        <button id="restore">คืนภาพ</button>
+      </div>
+      <p class="hint" id="bulkHint">ไม่ได้เลือก = ทำกับทุกบัญชี ยกเว้นตัวที่เปิดดูอยู่</p>
+    </div>
+    <ul id="list"></ul>
+  </aside>
+  <main id="empty">เลือกบัญชีทางซ้ายเพื่อเปิดเกม</main>
+
+  <dialog id="dlg">
+    <form method="dialog" id="form">
+      <h2 id="dlgTitle">เพิ่มบัญชี</h2>
+      <input type="hidden" name="id">
+      <label>ชื่อที่แสดง <input name="name" required maxlength="40" placeholder="เช่น ตัวหลัก / ตัวขายของ"></label>
+      <label>ลิงก์หน้าเกม <input name="gameUrl" type="url" required placeholder="https://..."></label>
+      <label>ชื่อผู้ใช้ <input name="username" autocomplete="off"></label>
+      <label>รหัสผ่าน <input name="password" type="password" autocomplete="new-password" placeholder=""></label>
+      <details>
+        <summary>ขั้นสูง: ระบุช่องกรอกเอง (ถ้ากรอกอัตโนมัติไม่ติด)</summary>
+        <label>CSS selector ช่องชื่อ <input name="userSelector" placeholder="#username"></label>
+        <label>CSS selector ช่องรหัส <input name="passSelector" placeholder="#password"></label>
+      </details>
+      <p class="error" id="formErr"></p>
+      <div class="row end">
+        <button type="button" id="del" class="danger">ลบบัญชี</button>
+        <span class="grow"></span>
+        <button value="cancel" formnovalidate>ยกเลิก</button>
+        <button value="ok" class="primary">บันทึก</button>
+      </div>
+    </form>
+  </dialog>
+  <script src="ui.js"></script>
+</body>
+</html>

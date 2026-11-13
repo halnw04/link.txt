@@ -1,0 +1,21 @@
+{
+  "name": "game-launcher",
+  "version": "0.1.0",
+  "description": "ตัวเปิดเกมบนเว็บหลายบัญชี: จำรหัส กรอกให้อัตโนมัติ พักภาพคืน RAM และตรวจภาพค้าง",
+  "main": "src/main.js",
+  "private": true,
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win portable --x64"
+  },
+  "devDependencies": {
+    "electron": "33.4.11",
+    "electron-builder": "25.1.8"
+  },
+  "build": {
+    "appId": "local.game-launcher",
+    "productName": "Game Launcher",
+    "files": ["src/**/*", "package.json"],
+    "win": { "target": "portable" }
+  }
+}
